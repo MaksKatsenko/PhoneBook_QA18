@@ -38,6 +38,51 @@ public class RegistrationTests {
 
         Assert.assertTrue(wd.findElement(By.xpath("//a[text()='ADD']")).getText().equals("ADD"));
     }
+
+    @Test
+    public void regNegativeTest() {
+        WebElement loginBtn = wd.findElement(By.xpath("//a[@href='/login']"));
+        loginBtn.click();
+
+        int i = (int)(System.currentTimeMillis() /1000) % 3600;
+
+        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys("arc" + i + "def.com");
+
+        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
+        passInput.click();
+        passInput.clear();
+        passInput.sendKeys("Rtg$tcd12434");
+
+        wd.findElement(By.xpath("//button[2]")).click();
+
+        Assert.assertFalse(wd.findElement(By.xpath("//a[text()='ADD']")).getText().equals("ADD"));
+    }
+
+    @Test
+    public void regNegativeTest2() {
+        WebElement loginBtn = wd.findElement(By.xpath("//a[@href='/login']"));
+        loginBtn.click();
+
+        int i = (int)(System.currentTimeMillis() /1000) % 3600;
+
+        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys("arc" + i + "@def.com");
+
+        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
+        passInput.click();
+        passInput.clear();
+        passInput.sendKeys("1234");
+
+        wd.findElement(By.xpath("//button[2]")).click();
+
+        Assert.assertFalse(wd.findElement(By.xpath("//a[text()='ADD']")).getText().equals("ADD"));
+    }
+
     @AfterMethod
     public void tearDown(){
    //     wd.quit();
