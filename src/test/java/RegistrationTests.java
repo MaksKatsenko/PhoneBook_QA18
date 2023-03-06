@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests {
     WebDriver wd;
+    String IncorrectEmail = "arcdef.com";
+    String IncorrectPassword = "1234";
 
     @BeforeMethod
     public void init(){
@@ -49,7 +51,7 @@ public class RegistrationTests {
         WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
         emailInput.click();
         emailInput.clear();
-        emailInput.sendKeys("arc" + i + "def.com");
+        emailInput.sendKeys(IncorrectEmail);
 
         WebElement passInput = wd.findElement(By.xpath("//input[2]"));
         passInput.click();
@@ -76,7 +78,7 @@ public class RegistrationTests {
         WebElement passInput = wd.findElement(By.xpath("//input[2]"));
         passInput.click();
         passInput.clear();
-        passInput.sendKeys("1234");
+        passInput.sendKeys(IncorrectPassword);
 
         wd.findElement(By.xpath("//button[2]")).click();
 
