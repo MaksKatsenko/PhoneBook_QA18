@@ -1,5 +1,6 @@
+package tests;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,34 +14,34 @@ public class RegistrationTests extends TestBase {
 
  @BeforeMethod
  public void preCondition(){
-     if (isLogged()){
-         logout();
+     if (app.getUser().isLogged()){
+         app.getUser().logout();
      }
  }
 
     @Test
     public void regPositiveTest() {
-       openLoginRegistrationForm();
+        app.getUser().openLoginRegistrationForm();
         int i = (int)(System.currentTimeMillis() /1000) % 3600;
         String email = "arc" + i + "@def.com";
         String password = "$Altcd12434";
-        fillLoginRegistrationForm(email, password);
-        submitRegistration();
-        Assert.assertTrue(wd.findElement(By.xpath("//a[text()='ADD']")).getText().equals("ADD"));
+        app.getUser().fillLoginRegistrationForm(email, password);
+        app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//a[text()='ADD']")));
     }
 
     @Test
     public void regNegativeTest() {
-        openLoginRegistrationForm();
-        fillLoginRegistrationForm(IncorrectEmail, CorrectPassword);
-        submitRegistration();
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(IncorrectEmail, CorrectPassword);
+        app.getUser().submitRegistration();
     }
 
     @Test
     public void regNegativeTest2() {
-        openLoginRegistrationForm();
-        fillLoginRegistrationForm(CorrectEmail, IncorrectPassword);
-        submitRegistration();
+        app.getUser().openLoginRegistrationForm();
+        app.getUser().fillLoginRegistrationForm(CorrectEmail, IncorrectPassword);
+        app.getUser().submitRegistration();
     }
 
     @AfterMethod
