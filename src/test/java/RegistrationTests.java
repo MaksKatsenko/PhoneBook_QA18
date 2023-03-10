@@ -32,7 +32,6 @@ public class RegistrationTests extends TestBase {
     @Test
     public void regNegativeTest() {
         openLoginRegistrationForm();
-        int i = (int)(System.currentTimeMillis() /1000) % 3600;
         fillLoginRegistrationForm(IncorrectEmail, CorrectPassword);
         submitRegistration();
     }
@@ -40,7 +39,6 @@ public class RegistrationTests extends TestBase {
     @Test
     public void regNegativeTest2() {
         openLoginRegistrationForm();
-        int i = (int)(System.currentTimeMillis() /1000) % 3600;
         fillLoginRegistrationForm(CorrectEmail, IncorrectPassword);
         submitRegistration();
     }

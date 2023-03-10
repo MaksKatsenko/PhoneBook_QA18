@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
@@ -11,6 +12,7 @@ public class LoginTests extends TestBase{
          openLoginRegistrationForm();
          fillLoginRegistrationForm(correctEmail, correctPassword);
          submitLogin();
+         Assert.assertTrue(isLogged());
      }
 
     @Test
