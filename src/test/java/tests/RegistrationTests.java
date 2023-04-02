@@ -8,10 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
-    String CorrectEmail = "Telran2022@gmail.com";
-    String CorrectPassword = "Ads$gf1288";
-    String IncorrectEmail = "ran2018mail.com";
-    String IncorrectPassword = "ds1288";
 
  @BeforeMethod
  public void preCondition(){
@@ -29,6 +25,7 @@ public class RegistrationTests extends TestBase {
                 .build();
 
         app.getUser().openLoginRegistrationForm();
+        logger.info("regPositiveTest starts with: " + user.getEmail() + " & " + user.getPassword());
         app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitRegistration();
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//a[text()='ADD']")));
@@ -43,6 +40,10 @@ public class RegistrationTests extends TestBase {
         app.getUser().openLoginRegistrationForm();
         app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitRegistration();
+
+        Assert.assertTrue(app.getUser().isErrorFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
+
     }
 
     @Test
@@ -54,6 +55,9 @@ public class RegistrationTests extends TestBase {
         app.getUser().openLoginRegistrationForm();
         app.getUser().fillLoginRegistrationForm(user);
         app.getUser().submitRegistration();
+
+        Assert.assertTrue(app.getUser().isErrorFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
     @AfterMethod

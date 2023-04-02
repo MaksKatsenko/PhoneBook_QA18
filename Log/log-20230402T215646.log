@@ -1,0 +1,10 @@
+21:56:50.371 [Test worker] INFO  manager.MyListener - Start searching element by By.xpath: //a[@href='/login']
+21:56:50.398 [Test worker] INFO  manager.MyListener - The element with locator by By.xpath: //a[@href='/login'] is found successfully
+21:56:50.458 [Test worker] INFO  manager.MyListener - Start searching element by By.xpath: //input[1]
+21:56:50.475 [Test worker] INFO  manager.MyListener - The element with locator by By.xpath: //input[1] is found successfully
+21:56:50.599 [Test worker] INFO  manager.MyListener - Start searching element by By.xpath: //input[2]
+21:56:50.613 [Test worker] INFO  manager.MyListener - The element with locator by By.xpath: //input[2] is found successfully
+21:56:50.726 [Test worker] INFO  manager.MyListener - Start searching element by By.xpath: //button[1]
+21:56:50.739 [Test worker] INFO  manager.MyListener - The element with locator by By.xpath: //button[1] is found successfully
+21:56:50.774 [Test worker] INFO  manager.MyListener - Start searching element by By.xpath: //button[.='Sign Out']
+21:56:51.961 [Test worker] INFO  manager.MyListener - The element with locator by By.xpath: //button[.='Sign Out'] is found successfully
