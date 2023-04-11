@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
 
-     @Test
+     @Test(invocationCount = 3, groups = {"smoke"})
     public void loginPositiveTest(){
          User user = User.builder()
                  .email("Telran2022@gmail.com")
@@ -19,7 +19,7 @@ public class LoginTests extends TestBase{
          Assert.assertTrue(app.getUser().isLogged());
      }
 
-    @Test
+    @Test(groups = {"smoke","regress"})
     public void loginNegativeTest1(){
         User user = User.builder()
                 .email("ran2018mail.com")
@@ -31,7 +31,7 @@ public class LoginTests extends TestBase{
         app.getUser().submitLogin();
     }
 
-    @Test
+    @Test(groups = {"regress"})
     public void loginNegativeTest2(){
         User user = User.builder()
                 .email("Telran2022@gmail.com")

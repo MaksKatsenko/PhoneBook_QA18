@@ -9,14 +9,14 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
 
- @BeforeMethod
+ @BeforeMethod(alwaysRun = true)
  public void preCondition(){
      if (app.getUser().isLogged()){
          app.getUser().logout();
      }
  }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void regPositiveTest() {
         int i = (int)(System.currentTimeMillis() /1000) % 3600;
         User user = User.builder()
@@ -60,7 +60,7 @@ public class RegistrationTests extends TestBase {
         Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
    //     wd.quit();
     }
