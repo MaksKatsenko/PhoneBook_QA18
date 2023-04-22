@@ -1,17 +1,18 @@
 package tests;
 
+import manager.ProviderData;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
 
-     @Test(invocationCount = 3, groups = {"smoke"})
-    public void loginPositiveTest(){
-         User user = User.builder()
-                 .email("Telran2022@gmail.com")
-                 .password("Ads$gf1288")
-                 .build();
+     @Test(invocationCount = 1, groups = {"smoke"}, dataProvider = "loginModelDto", dataProviderClass = ProviderData.class)
+    public void loginPositiveTest(User user){
+//         User user = User.builder()
+//                 .email("Telran2022@gmail.com")
+//                 .password("Ads$gf1288")
+//                 .build();
 
         app.getUser().openLoginRegistrationForm();
          app.getUser().fillLoginRegistrationForm(user);
